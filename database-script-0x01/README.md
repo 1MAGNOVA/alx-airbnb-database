@@ -1,1 +1,2 @@
 Seed.sql
+schema.sql
