@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS Payment (
     amount DECIMAL(10, 2) NOT NULL,
     payment_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     payment_method VARCHAR(30),
-    status VARCHAR(20) DEFAULT 'pending'
+    payment_status VARCHAR(20) DEFAULT 'pending'
 );
 
 -- Create the Review table
@@ -60,3 +60,15 @@ CREATE TABLE IF NOT EXISTS Review (
     comment VARCHAR(1000),
     comment_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+-- Indexes for foreign keys
+CREATE INDEX IF NOT EXISTS idx_property_owner ON Property(owner_id);
+CREATE INDEX IF NOT EXISTS idx_booking_user ON Booking(user_id);
+CREATE INDEX IF NOT EXISTS idx_booking_property ON Booking(property_id);
+CREATE INDEX IF NOT EXISTS idx_payment_booking ON Payment(booking_id);
+CREATE INDEX IF NOT EXISTS idx_review_user ON Review(user_id);
+CREATE INDEX IF NOT EXISTS idx_review_property ON Review(property_id);
+
+-- Indexes for common search fields
+CREATE INDEX IF NOT EXISTS idx_user_email ON User(email);
+CREATE INDEX IF NOT EXISTS idx_property_location ON Property(location);
+CREATE INDEX IF NOT EXISTS idx_booking_status ON Booking(booking_status);
