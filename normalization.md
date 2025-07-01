@@ -1,21 +1,5 @@
 # Database Normalization to 3NF
 
-👤 User
-id, full_name, email, phone_number, password_hash, created_at, is_host
-
-🏠 Property
-id, owner_id (FK), title, description, city, country, price_per_night, max_guests, created_at, is_available
-
-📅 Booking
-id, user_id (FK), property_id (FK), start_date, end_date, booking_status, created_at
-
-💳 Payment
-id, booking_id (FK + UNIQUE), amount, payment_date, payment_method, status
-
-📝 Review
-id, user_id (FK), property_id (FK), rating, comment, created_at
-
-
 ## First Normal Form (1NF)
 - All tables contain only atomic (indivisible) values.
 - No repeating groups or arrays exist.
